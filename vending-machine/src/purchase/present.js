@@ -55,15 +55,15 @@ function purchasePresent() {
 
 export default class PurchasePresent {
   constructor() {
-    this.div = purchasePresent();
+    this.$div = purchasePresent();
     this.setVisible(false);
   }
 
   setVisible(boo) {
     if (boo) {
-      this.div.style.visibility = 'visible';
+      this.$div.style.visibility = 'visible';
       return true;
     }
-    this.div.style.visibility = 'hidden';
+    this.$div.style.visibility = 'hidden';
   }
 }

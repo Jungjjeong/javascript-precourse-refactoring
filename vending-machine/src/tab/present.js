@@ -22,17 +22,17 @@ function tabPresent() {
 
 export default class TabPresent {
   constructor() {
-    this.div = tabPresent();
-    this.addBtn = document.querySelector(`#${ID.TAB_MENU_ADD}`);
-    this.machineBtn = document.querySelector(`#${ID.TAB_MENU_MACHINE}`);
-    this.purchaseBtn = document.querySelector(`#${ID.TAB_MENU_PURCHASE}`);
+    this.$div = tabPresent();
+    this.$addBtn = document.querySelector(`#${ID.TAB_MENU_ADD}`);
+    this.$machineBtn = document.querySelector(`#${ID.TAB_MENU_MACHINE}`);
+    this.$purchaseBtn = document.querySelector(`#${ID.TAB_MENU_PURCHASE}`);
   }
 
   setVisible(boo) {
     if (boo) {
-      this.div.style.visibility = 'visible';
+      this.$div.style.visibility = 'visible';
       return true;
     }
-    this.div.style.visibility = 'hidden';
+    this.$div.style.visibility = 'hidden';
   }
 }

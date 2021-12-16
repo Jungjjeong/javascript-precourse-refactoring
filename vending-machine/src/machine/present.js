@@ -41,15 +41,15 @@ function machinePresent() {
 
 export default class MachinePresent {
   constructor() {
-    this.div = machinePresent();
+    this.$div = machinePresent();
     this.setVisible(false);
   }
 
   setVisible(boo) {
     if (boo) {
-      this.div.style.visibility = 'visible';
+      this.$div.style.visibility = 'visible';
       return true;
     }
-    this.div.style.visibility = 'hidden';
+    this.$div.style.visibility = 'hidden';
   }
 }
