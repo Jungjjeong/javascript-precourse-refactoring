@@ -46,10 +46,11 @@ export function createDiv(id) {
 }
 
 // table func
-export function createTable(colums) {
+export function createTable(colums, bodyId) {
   let table = document.createElement('table');
   let thead = document.createElement('thead');
   let tbody = document.createElement('tbody');
+  tbody.id = bodyId;
 
   appendDiv(table, [thead, tbody]);
 

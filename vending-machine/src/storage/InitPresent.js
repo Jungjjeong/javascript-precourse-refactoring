@@ -48,6 +48,6 @@ export default class InitPresent {
     divArr[1].setVisible(false);
     divArr[2].setVisible(false);
 
-    this.app.insertBefore(divArr[0].$div, this.app.childNodes[1]);
+    this.$app.insertBefore(divArr[0].$div, this.$app.childNodes[1]);
   }
 }
