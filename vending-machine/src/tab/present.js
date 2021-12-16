@@ -1,17 +1,19 @@
 import { TAB_MENU, ID } from '../storage/constants.js';
 import * as func from '../storage/presentFunc.js';
 
-function initTabMenu() {
-  const tabMenuDiv = createDiv('tab-menu');
+function initTabMenu($div) {
+  const $title = func.createTitle('h1', TAB_MENU.TITLE);
+  const $addBtn = func.createBtn(TAB_MENU.ADD_BTN, ID.ADD_BTN);
+  const $machineBtn = func.createBtn(TAB_MENU.MACHINE_BTN, ID.MACHINE_BTN);
+  const $purchaseBtn = func.createBtn(TAB_MENU.PURCHASE_BTN, ID.PURCHASE_BTN);
 
-  tabMenuDiv.appendChild(func.createTitle('h1', TAB_MENU.TITLE));
-  tabMenuDiv.appendChild(func.createBtn(TAB_MENU.ADD_BTN, ID.ADD_BTN));
-  tabMenuDiv.appendChild(func.createBtn(TAB_MENU.MACHINE_BTN, ID.MACHINE_BTN));
-  tabMenuDiv.appendChild(func.createBtn(TAB_MENU.PURCHASE_BTN, ID.PURCHASE_BTN));
-
-  return tabMenuDiv;
+  func.appendDiv($div, [$title, $addBtn, $machineBtn, $purchaseBtn]);
 }
 
-export default function tab() {
-  document.querySelector('#app').appendChild(initTabMenu());
+export default function tabPresent() {
+  const $tabMenuDiv = func.createDiv(ID.TAB_MENU_DIV);
+
+  initTabMenu($tabMenuDiv);
+
+  document.querySelector('#app').appendChild($tabMenuDiv);
 }
