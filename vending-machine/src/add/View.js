@@ -1,8 +1,9 @@
+import { TABLE_ID } from '../storage/constants.js';
 import { createProductTbody } from '../storage/presentFunc.js';
 
 export default class View {
   constructor(productList) {
-    this.tbody = document.querySelector('#item-table');
+    this.tbody = document.querySelector(`#${TABLE_ID.ADD_TABLE}`);
     this.productList = productList;
   }
 

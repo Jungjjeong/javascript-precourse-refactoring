@@ -1,4 +1,4 @@
-import { ADD, ID } from '../storage/constants.js';
+import { ADD, ID, TABLE_ID } from '../storage/constants.js';
 import * as func from '../storage/presentFunc.js';
 
 function initAdd($div) {
@@ -11,7 +11,7 @@ function initAdd($div) {
   const $itemTitle = func.createTitle('h3', ADD.PRODUCT_TITLE);
   const $itemTable = func.createTable(
     [ADD.NAME, ADD.PRICE, ADD.QUANTITY],
-    `${ADD_TABLE}`,
+    `${TABLE_ID.ADD_TABLE}`,
   );
 
   func.appendDiv($div, [

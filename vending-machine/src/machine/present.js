@@ -1,10 +1,14 @@
-import { ID, MACHINE } from '../storage/constants.js';
+import { ID, MACHINE, TABLE_ID } from '../storage/constants.js';
 import * as func from '../storage/presentFunc.js';
 
 function initMachineTable($div) {
   const $coinTitle = func.createTitle('h3', MACHINE.MACHINE_TITLE);
-  const $coinTable = func.createTable([MACHINE.COIN, MACHINE.COIN_NUM], `${COIN_TABLE}`);
-  func.createCoinTbody($coinTable, [
+  const $coinTable = func.createTable(
+    [MACHINE.COIN, MACHINE.COIN_NUM],
+    `${TABLE_ID.COIN_TABLE}`,
+  );
+  const $coinTBody = $coinTable.querySelector('tbody');
+  func.createCoinTbody($coinTBody, [
     [MACHINE.COIN_500, ''],
     [MACHINE.COIN_100, ''],
     [MACHINE.COIN_50, ''],

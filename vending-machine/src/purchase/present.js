@@ -1,4 +1,4 @@
-import { PURCHASE, ID } from '../storage/constants.js';
+import { PURCHASE, ID, TABLE_ID } from '../storage/constants.js';
 import * as func from '../storage/presentFunc.js';
 
 function initCoin($div) {
@@ -6,9 +6,10 @@ function initCoin($div) {
   const $coinBtn = func.createBtn(PURCHASE.COIN_BTN, ID.PURCHASE_RETURN_BTN);
   const $coinTable = func.createTable(
     [PURCHASE.COIN, PURCHASE.COIN_NUM],
-    `${RETURN_COIN_TABLE}`,
+    `${TABLE_ID.RETURN_COIN_TABLE}`,
   );
-  func.createCoinTbody($coinTable, [
+  const $coinTBody = $coinTable.querySelector('tbody');
+  func.createCoinTbody($coinTBody, [
     [PURCHASE.COIN_500, ''],
     [PURCHASE.COIN_100, ''],
     [PURCHASE.COIN_50, ''],
@@ -22,7 +23,7 @@ function initItem($div) {
   const $itemTitle = func.createTitle('h3', PURCHASE.ITEM_TITLE);
   const $itemTable = func.createTable(
     [PURCHASE.NAME, PURCHASE.PRICE, PURCHASE.QUANTITY, PURCHASE.PURCHASE],
-    `${PURCHASE_TABLE}`,
+    `${TABLE_ID.PURCHASE_TABLE}`,
   );
 
   func.appendDiv($div, [$itemTitle, $itemTable]);

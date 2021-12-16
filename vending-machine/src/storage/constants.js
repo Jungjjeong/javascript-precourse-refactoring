@@ -95,3 +95,5 @@ export const PURCHASE = {
   COIN_50: '50원',
   COIN_10: '10원',
 };
+
+export const COIN_ARR = [500, 100, 50, 10];

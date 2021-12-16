@@ -67,20 +67,29 @@ export function createTable(colums, bodyId) {
   return table;
 }
 
-export function createCoinTbody(table, rows) {
-  const tbody = table.querySelector('tbody');
-
+export function createCoinTbody(tbody, rows) {
+  console.log(tbody);
   rows.forEach(row => {
     const body = document.createElement('tr');
     const first = document.createElement('td');
     first.innerText = row[0];
     const second = document.createElement('td');
     second.innerText = row[1];
+
     appendDiv(body, [first, second]);
     tbody.appendChild(body);
   });
 
   appendTbodyStyle(tbody);
+}
+
+export function updateCoinTbody(tbody, data) {
+  const tr = tbody.querySelectorAll('tr');
+  tr.forEach((t, idx) => {
+    const td = t.querySelectorAll('td');
+    console.log(td);
+    td[1].innerText = data[idx];
+  });
 }
 
 export function createProductTbody(productList, tbody) {
