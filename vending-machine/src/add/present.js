@@ -22,9 +22,25 @@ function initAdd($div) {
   ]);
 }
 
-export default function addPresent() {
+function addPresent() {
   const $addDiv = func.createDiv(ID.ADD_DIV);
   initAdd($addDiv);
 
   document.querySelector('#app').appendChild($addDiv);
+
+  return $addDiv;
+}
+
+export default class AddPresent {
+  constructor() {
+    this.div = addPresent();
+  }
+
+  setVisible(boo) {
+    if (boo) {
+      this.div.style.visibility = 'visible';
+      return true;
+    }
+    this.div.style.visibility = 'hidden';
+  }
 }

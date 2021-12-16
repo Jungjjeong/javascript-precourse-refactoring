@@ -1,6 +1,8 @@
 export const ID = {
   TAB_MENU_DIV: 'tab-menu',
   PURCHASE_DIV: 'purchase-div',
+  MACHINE_DIV: 'machine-div',
+  ADD_DIV: 'add-div',
   TAB_MENU_ADD: 'product-add-menu',
   TAB_MENU_MACHINE: 'vending-machine-manage-menu',
   TAB_MENU_PURCHASE: 'product-purchase-menu',

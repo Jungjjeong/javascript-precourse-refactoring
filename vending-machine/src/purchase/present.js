@@ -43,11 +43,27 @@ function initPurchase($div) {
   func.appendDiv($div, [$purchaseTitle, $purchaseInput, $purchaseBtn, $purchaseAmount]);
 }
 
-export default function purchasePresent() {
+function purchasePresent() {
   const $purchaseDiv = func.createDiv(ID.PURCHASE_DIV);
   initPurchase($purchaseDiv);
   initItem($purchaseDiv);
   initCoin($purchaseDiv);
 
   document.querySelector('#app').appendChild($purchaseDiv);
+  return $purchaseDiv;
+}
+
+export default class PurchasePresent {
+  constructor() {
+    this.div = purchasePresent();
+    this.setVisible(false);
+  }
+
+  setVisible(boo) {
+    if (boo) {
+      this.div.style.visibility = 'visible';
+      return true;
+    }
+    this.div.style.visibility = 'hidden';
+  }
 }

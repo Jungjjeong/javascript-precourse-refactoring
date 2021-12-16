@@ -82,6 +82,7 @@ export function createTbody(table, rows) {
   appendTbodyStyle(tbody);
 }
 
+// table style
 export function appendTableStyle(table) {
   table.style.borderCollapse = 'collapse';
   table.style.borderSpacing = 0;

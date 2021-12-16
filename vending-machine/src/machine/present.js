@@ -30,10 +30,26 @@ function initMachineCharge($div) {
   func.appendDiv($div, [$chargeTitle, $chargeInput, $chargeBtn, $chargeAmount]);
 }
 
-export default function machinePresent() {
+function machinePresent() {
   const $machineDiv = func.createDiv(ID.MACHINE_DIV);
   initMachineCharge($machineDiv);
   initMachineTable($machineDiv);
 
   document.querySelector('#app').appendChild($machineDiv);
+  return $machineDiv;
+}
+
+export default class MachinePresent {
+  constructor() {
+    this.div = machinePresent();
+    this.setVisible(false);
+  }
+
+  setVisible(boo) {
+    if (boo) {
+      this.div.style.visibility = 'visible';
+      return true;
+    }
+    this.div.style.visibility = 'hidden';
+  }
 }

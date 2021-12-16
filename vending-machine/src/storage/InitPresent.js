@@ -1,19 +1,53 @@
-import tabPresent from '../tab/present.js';
-import addPresent from '../add/present.js';
-import machinePresent from '../machine/present.js';
-import purchasePresent from '../purchase/present.js';
+import TabPresent from '../tab/present.js';
+import AddPresent from '../add/present.js';
+import MachinePresent from '../machine/present.js';
+import PurchasePresent from '../purchase/present.js';
 import { ID } from './constants.js';
 
 export default class InitPresent {
   constructor() {
-    this.addBtn = document.querySelector(ID.ADD_BTN);
-    this.machineBtn = document.querySelector(ID.MACHINE_BTN);
-    this.purchaseBtn = document.querySelector(ID.PURCHASE_BTN);
-    this.tab = tabPresent();
-    this.add = addPresent();
-    this.machine = machinePresent();
-    this.purchase = purchasePresent();
+    this.addBtn = document.querySelector(`#${ID.TAB_MENU_ADD}`);
+    this.machineBtn = document.querySelector(`#${ID.TAB_MENU_MACHINE}`);
+    this.purchaseBtn = document.querySelector(`#${ID.TAB_MENU_PURCHASE}`);
+    this.tab = new TabPresent();
+    this.add = new AddPresent();
+    this.machine = new MachinePresent();
+    this.purchase = new PurchasePresent();
+    this.app = document.querySelector('#app');
+    this.setAddMenu();
+    this.setMachineMenu();
+    this.setPurchaseMenu();
   }
 
-  setAddMenu() {}
+  setAddMenu() {
+    this.tab.addBtn.addEventListener('click', e => {
+      e.preventDefault();
+
+      this.setDivVisible([this.add, this.machine, this.purchase]);
+    });
+  }
+
+  setMachineMenu() {
+    this.tab.machineBtn.addEventListener('click', e => {
+      e.preventDefault();
+
+      this.setDivVisible([this.machine, this.add, this.purchase]);
+    });
+  }
+
+  setPurchaseMenu() {
+    this.tab.purchaseBtn.addEventListener('click', e => {
+      e.preventDefault();
+
+      this.setDivVisible([this.purchase, this.add, this.machine]);
+    });
+  }
+
+  setDivVisible(divArr) {
+    divArr[0].setVisible(true);
+    divArr[1].setVisible(false);
+    divArr[2].setVisible(false);
+
+    this.app.insertBefore(divArr[0].div, this.app.childNodes[1]);
+  }
 }

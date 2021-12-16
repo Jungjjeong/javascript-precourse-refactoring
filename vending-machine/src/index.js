@@ -1,13 +1,12 @@
-import present from './tab/present.js';
+import InitPresent from './storage/initPresent.js';
 
-present();
-// export default class VendingMachine {
-//   constructor() {
-//     this.init = init();
-//   }
+export default class VendingMachine {
+  constructor() {
+    this.init = new InitPresent();
+  }
 
-//   init() {
-//     return;
-//   }
-// }
-// const machine = new VendingMachine();
+  init() {
+    return;
+  }
+}
+const machine = new VendingMachine();
