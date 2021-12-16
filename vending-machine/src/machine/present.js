@@ -4,7 +4,7 @@ import * as func from '../storage/presentFunc.js';
 function initMachineTable($div) {
   const $coinTitle = func.createTitle('h3', MACHINE.MACHINE_TITLE);
   const $coinTable = func.createTable([MACHINE.COIN, MACHINE.COIN_NUM], 'coin-table');
-  func.createTbody($coinTable, [
+  func.createCoinTbody($coinTable, [
     [MACHINE.COIN_500, ''],
     [MACHINE.COIN_100, ''],
     [MACHINE.COIN_50, ''],

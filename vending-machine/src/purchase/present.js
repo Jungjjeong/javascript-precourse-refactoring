@@ -8,7 +8,7 @@ function initCoin($div) {
     [PURCHASE.COIN, PURCHASE.COIN_NUM],
     'return-coin-table',
   );
-  func.createTbody($coinTable, [
+  func.createCoinTbody($coinTable, [
     [PURCHASE.COIN_500, ''],
     [PURCHASE.COIN_100, ''],
     [PURCHASE.COIN_50, ''],

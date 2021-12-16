@@ -67,7 +67,7 @@ export function createTable(colums, bodyId) {
   return table;
 }
 
-export function createTbody(table, rows) {
+export function createCoinTbody(table, rows) {
   const tbody = table.querySelector('tbody');
 
   rows.forEach(row => {
@@ -78,6 +78,25 @@ export function createTbody(table, rows) {
     second.innerText = row[1];
     appendDiv(body, [first, second]);
     tbody.appendChild(body);
+  });
+
+  appendTbodyStyle(tbody);
+}
+
+export function createProductTbody(productList, tbody) {
+  tbody.innerHTML = '';
+  productList.forEach((product, idx) => {
+    const body = document.createElement('tr');
+    body.id = `product-${idx}`;
+    const first = document.createElement('td');
+    first.innerText = product.name;
+    const second = document.createElement('td');
+    second.innerText = product.price;
+    const third = document.createElement('td');
+    third.innerText = product.quantity;
+
+    appendDiv(body, [first, second, third]);
+    tbody.append(body);
   });
 
   appendTbodyStyle(tbody);
