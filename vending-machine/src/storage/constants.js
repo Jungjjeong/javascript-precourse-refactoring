@@ -1,4 +1,6 @@
 export const ID = {
+  TAB_MENU_DIV: 'tab-menu',
+  PURCHASE_DIV: 'purchase-div',
   TAB_MENU_ADD: 'product-add-menu',
   TAB_MENU_MACHINE: 'vending-machine-manage-menu',
   TAB_MENU_PURCHASE: 'product-purchase-menu',
@@ -16,7 +18,7 @@ export const ID = {
   PURCHASE_INPUT: 'charge-input',
   PURCHASE_BTN: 'charge-button',
   PURCHASE_AMOUNT: 'charge-amount',
-  PURCHASE_BTN: 'coin-return-button',
+  PURCHASE_RETURN_BTN: 'coin-return-button',
   PURCHASE_COIN_500: 'coin-500-quantity',
   PURCHASE_COIN_100: 'coin-100-quantity',
   PURCHASE_COIN_50: 'coin-50-quantity',
