@@ -27,6 +27,13 @@ export const ID = {
   PURCHASE_COIN_10: 'coin-10-quantity',
 };
 
+export const TABLE_ID = {
+  ADD_TABLE: 'item-table',
+  COIN_TABLE: 'coin-table',
+  PURCHASE_TABLE: 'purchase-item-table',
+  RETURN_COIN_TABLE: 'return-coin-table',
+};
+
 export const ClASS = {
   ADD_ITEM: 'product-manage-item',
   ADD_ITEM_NAME: 'product-manage-name',

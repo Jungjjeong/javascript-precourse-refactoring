@@ -9,7 +9,10 @@ function initAdd($div) {
   const $btn = func.createBtn(ADD.ADD_BTN, ID.ADD_BTN);
 
   const $itemTitle = func.createTitle('h3', ADD.PRODUCT_TITLE);
-  const $itemTable = func.createTable([ADD.NAME, ADD.PRICE, ADD.QUANTITY], 'item-table');
+  const $itemTable = func.createTable(
+    [ADD.NAME, ADD.PRICE, ADD.QUANTITY],
+    `${ADD_TABLE}`,
+  );
 
   func.appendDiv($div, [
     $title,

@@ -1,4 +1,4 @@
-import { appendDiv, createProductTbody } from '../storage/presentFunc.js';
+import { createProductTbody } from '../storage/presentFunc.js';
 
 export default class View {
   constructor(productList) {

@@ -6,7 +6,7 @@ function initCoin($div) {
   const $coinBtn = func.createBtn(PURCHASE.COIN_BTN, ID.PURCHASE_RETURN_BTN);
   const $coinTable = func.createTable(
     [PURCHASE.COIN, PURCHASE.COIN_NUM],
-    'return-coin-table',
+    `${RETURN_COIN_TABLE}`,
   );
   func.createCoinTbody($coinTable, [
     [PURCHASE.COIN_500, ''],
@@ -22,7 +22,7 @@ function initItem($div) {
   const $itemTitle = func.createTitle('h3', PURCHASE.ITEM_TITLE);
   const $itemTable = func.createTable(
     [PURCHASE.NAME, PURCHASE.PRICE, PURCHASE.QUANTITY, PURCHASE.PURCHASE],
-    'purchase-item-table',
+    `${PURCHASE_TABLE}`,
   );
 
   func.appendDiv($div, [$itemTitle, $itemTable]);
