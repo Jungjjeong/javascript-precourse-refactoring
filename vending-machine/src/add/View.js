@@ -1,4 +1,4 @@
-import { TABLE_ID } from '../storage/constants.js';
+import { CLASS, TABLE_ID } from '../storage/constants.js';
 import { createProductTbody } from '../storage/presentFunc.js';
 
 export default class View {
@@ -8,6 +8,10 @@ export default class View {
   }
 
   showList(productList) {
-    createProductTbody(productList, this.tbody);
+    createProductTbody(
+      productList,
+      [CLASS.ADD_ITEM_NAME, CLASS.ADD_ITEM_PRICE, CLASS.ADD_ITEM_QUANTITY],
+      this.tbody,
+    );
   }
 }

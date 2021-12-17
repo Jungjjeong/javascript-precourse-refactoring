@@ -34,7 +34,7 @@ export const TABLE_ID = {
   RETURN_COIN_TABLE: 'return-coin-table',
 };
 
-export const ClASS = {
+export const CLASS = {
   ADD_ITEM: 'product-manage-item',
   ADD_ITEM_NAME: 'product-manage-name',
   ADD_ITEM_PRICE: 'product-manage-price',
@@ -85,7 +85,7 @@ export const PURCHASE = {
   NAME: '상품명',
   PRICE: '가격',
   QUANTITY: '수량',
-  PURCHASE: '구매',
+  PURCHASE: '구매하기',
   COIN: '동전',
   COIN_NUM: '개수',
   COIN_TITLE: '잔돈',

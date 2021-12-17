@@ -1,3 +1,5 @@
+import { CLASS, PURCHASE } from './constants.js';
+
 // append func
 export function appendDiv(div, childArr) {
   childArr.forEach(child => div.appendChild(child));
@@ -92,23 +94,58 @@ export function updateCoinTbody(tbody, data) {
   });
 }
 
-export function createProductTbody(productList, tbody) {
+export function createProductTbody(productList, classList, tbody) {
   tbody.innerHTML = '';
   productList.forEach((product, idx) => {
     const body = document.createElement('tr');
-    body.id = `product-${idx}`;
+    body.className = CLASS.ADD_ITEM;
     const first = document.createElement('td');
     first.innerText = product.name;
+    first.className = classList[0];
     const second = document.createElement('td');
     second.innerText = product.price;
+    second.className = classList[1];
     const third = document.createElement('td');
     third.innerText = product.quantity;
+    third.className = classList[2];
 
     appendDiv(body, [first, second, third]);
     tbody.append(body);
   });
 
   appendTbodyStyle(tbody);
+}
+
+export function createPurchaseTbody(productList, classList, tbody) {
+  tbody.innerHTML = '';
+  productList.forEach((product, idx) => {
+    const body = document.createElement('tr');
+    body.className = CLASS.PURCHASE_ITEM;
+    const first = document.createElement('td');
+    first.innerText = product.name;
+    first.className = classList[0];
+    const second = document.createElement('td');
+    second.innerText = product.price;
+    second.className = classList[1];
+    const third = document.createElement('td');
+    third.innerText = product.quantity;
+    third.className = classList[2];
+    const fourth = document.createElement('td');
+    fourth.appendChild(createPurchaseBtn(PURCHASE.PURCHASE));
+
+    appendDiv(body, [first, second, third, fourth]);
+    tbody.append(body);
+  });
+
+  appendTbodyStyle(tbody);
+}
+
+function createPurchaseBtn(text) {
+  const button = document.createElement('button');
+  button.innerText = text;
+  button.className = CLASS.PURCHASE_BTN;
+
+  return button;
 }
 
 // table style

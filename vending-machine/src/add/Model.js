@@ -16,7 +16,7 @@ export default class Model {
     this.productList.push(this.product);
   }
 
-  removeItem(productIdx) {
+  removeProduct(productIdx) {
     this.productList.splice(productIdx, 1);
   }
 }
