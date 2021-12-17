@@ -17,6 +17,7 @@ export default class Controller {
     this.returnBtn = document.querySelector(`#${ID.PURCHASE_RETURN_BTN}`);
     this.addPurCoin();
     this.returnPurCoin();
+    this.getCurrentCoin();
   }
 
   // 잔돈 보유 금액, 코인 배열 받아오기
@@ -29,12 +30,15 @@ export default class Controller {
     this.machineCoinList = machine.coinList;
   }
 
-  // localStorage
-  getCurrentProduct() {
-    const current = this.storage.product;
-    if (current.quantity == 0) {
+  getCurrentCoin() {
+    const current = this.storage.purchaseCoin;
+    if (current.purchaseCoin == 0) {
       return;
     }
+    console.log(current.purchaseCoin);
+
+    this.model.purCoinAmount = current.purchaseCoin;
+    this.view.showAmount(this.model.purCoinAmount);
   }
 
   // 리스트 받아와 상품 더하기
@@ -80,6 +84,7 @@ export default class Controller {
 
       this.view.showAmount(this.model.purCoinAmount);
       this.view.showReturnCoinList(returnCoin.list);
+      this.updateStorage(this.model.purCoinAmount);
     });
   }
 
@@ -89,6 +94,7 @@ export default class Controller {
       btn.addEventListener('click', e => {
         e.preventDefault();
         this.purchaseProduct(this.purProductList[idx], idx);
+        this.updateStorage(this.model.purCoinAmount);
       });
     });
   }
@@ -135,6 +141,10 @@ export default class Controller {
       amount: coinAmount,
       reduce: originCoin - coinAmount,
     };
+  }
+
+  updateStorage(coin) {
+    this.storage.updatePurchaseCoin(coin);
   }
 
   // 잔돈 충전에 다시 렌더링해줘야지

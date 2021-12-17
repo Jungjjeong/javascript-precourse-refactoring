@@ -1,4 +1,5 @@
 import { ID, COIN_ARR } from '../storage/constants.js';
+import Storage from '../storage/Storage.js';
 import { checkCoin } from '../storage/validator.js';
 import Model from './Model.js';
 import View from './View.js';
@@ -7,9 +8,28 @@ export default class Controller {
   constructor() {
     this.model = new Model();
     this.view = new View();
+    this.storage = new Storage();
     this.input = document.querySelector(`#${ID.MACHINE_CHARGE_INPUT}`);
     this.addBtn = document.querySelector(`#${ID.MACHINE_CHARGE_BTN}`);
     this.addCoin();
+    this.getCurrentCoin();
+  }
+
+  getCurrentCoin() {
+    const current = this.storage.vendingMachinCoin;
+    if (current.coin == 0) {
+      return;
+    }
+
+    this.model.addCoin(current.coin, [
+      current.coin500,
+      current.coin100,
+      current.coin50,
+      current.coin10,
+    ]);
+
+    this.view.showAmount(this.model.coinAmount);
+    this.view.showList(this.model.coinList);
   }
 
   addCoin() {
@@ -25,6 +45,7 @@ export default class Controller {
 
       this.view.showAmount(this.model.coinAmount);
       this.view.showList(this.model.coinList);
+      this.updateStorage(this.model.coinAmount, this.model.coinList);
     });
   }
 
@@ -43,6 +64,19 @@ export default class Controller {
     return coinIndexArr;
   }
 
+  updateStorage(coin, coinArr) {
+    const machineCoin = {
+      coin: coin,
+      coin500: coinArr[0],
+      coin100: coinArr[1],
+      coin50: coinArr[2],
+      coin10: coinArr[3],
+    };
+
+    this.storage.updateMachineCoin(machineCoin);
+    console.log(this.storage.vendingMachinCoin);
+  }
+
   updateTable(machine) {
     if (!machine) {
       return;
@@ -53,6 +87,7 @@ export default class Controller {
 
     this.view.showAmount(this.model.coinAmount);
     this.view.showList(this.model.coinList);
+    this.updateStorage(this.model.coinAmount, this.model.coinList);
   }
 
   setPurchaseTable() {

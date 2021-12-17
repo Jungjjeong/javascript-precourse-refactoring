@@ -14,6 +14,7 @@ export default class Controller {
     this.quantityInput = document.querySelector(`#${ID.ADD_QUANTITY_INPUT}`);
     this.addBtn = document.querySelector(`#${ID.ADD_BTN}`);
     this.addProductInfo();
+    this.getCurrentProduct();
   }
   // storage
   getCurrentProduct() {
@@ -38,7 +39,18 @@ export default class Controller {
       }
       this.model.addProduct(name, price, quantity);
       this.view.showList(this.model.productList);
+      this.updateStorage(name, price, quantity);
     });
+  }
+
+  updateStorage(name, price, quantity) {
+    const product = {
+      name: name,
+      price: price,
+      quantity: quantity,
+    };
+    this.storage.updateProduct(product);
+    console.log(this.storage.product);
   }
 
   // 수량 업데이트 된 list 받기
