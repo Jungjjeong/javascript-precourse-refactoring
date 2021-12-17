@@ -16,6 +16,7 @@ export default class Controller {
       e.preventDefault();
       const coinAmount = this.input.value;
       const coinArr = this.addRandomCoin(coinAmount);
+      // 추가 가능 여부 체크
 
       this.model.addCoin(coinAmount, coinArr);
 

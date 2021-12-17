@@ -70,7 +70,6 @@ export function createTable(colums, bodyId) {
 }
 
 export function createCoinTbody(tbody, rows) {
-  console.log(tbody);
   rows.forEach(row => {
     const body = document.createElement('tr');
     const first = document.createElement('td');
@@ -89,7 +88,6 @@ export function updateCoinTbody(tbody, data) {
   const tr = tbody.querySelectorAll('tr');
   tr.forEach((t, idx) => {
     const td = t.querySelectorAll('td');
-    console.log(td);
     td[1].innerText = data[idx];
   });
 }

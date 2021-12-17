@@ -21,10 +21,10 @@ export default class Controller {
       const name = this.nameInput.value;
       const price = this.priceInput.value;
       const quantity = this.quantityInput.value;
-
+      // 등록 가능 여부 체크
       this.model.addProduct(name, price, quantity);
-      console.log(this.model.productList);
       this.view.showList(this.model.productList);
+
       this.purControll.addPurProduct(this.model.productList);
     });
   }
