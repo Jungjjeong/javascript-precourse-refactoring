@@ -1,4 +1,5 @@
 import { ID, COIN_ARR } from '../storage/constants.js';
+import { checkCoin } from '../storage/validator.js';
 import Model from './Model.js';
 import View from './View.js';
 
@@ -15,8 +16,10 @@ export default class Controller {
     this.addBtn.addEventListener('click', e => {
       e.preventDefault();
       const coinAmount = this.input.value;
+      if (!checkCoin(coinAmount)) {
+        return;
+      }
       const coinArr = this.addRandomCoin(coinAmount);
-      // 추가 가능 여부 체크
 
       this.model.addCoin(coinAmount, coinArr);
 
@@ -42,7 +45,6 @@ export default class Controller {
 
   updateTable(machine) {
     if (!machine) {
-      console.log('없네');
       return;
     }
 
@@ -51,8 +53,6 @@ export default class Controller {
 
     this.view.showAmount(this.model.coinAmount);
     this.view.showList(this.model.coinList);
-    console.log(this.model.coinAmount);
-    console.log(this.model.coinList);
   }
 
   setPurchaseTable() {

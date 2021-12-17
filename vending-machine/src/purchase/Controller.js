@@ -1,4 +1,5 @@
 import { ID, CLASS, COIN_ARR } from '../storage/constants.js';
+import { checkAllowPurchase, checkAllowReturn } from '../storage/validator.js';
 import Storage from '../storage/Storage.js';
 import Model from './Model.js';
 import View from './View.js';
@@ -53,6 +54,9 @@ export default class Controller {
     this.addBtn.addEventListener('click', e => {
       e.preventDefault();
       const purCoinAmount = this.input.value;
+      if (!checkPurchaseCoin(purCoinAmount)) {
+        return;
+      }
 
       this.model.addPurCoin(purCoinAmount);
 
@@ -65,6 +69,9 @@ export default class Controller {
     this.returnBtn.addEventListener('click', e => {
       e.preventDefault();
       // 반환할 수 있는 금액과 동전 계산
+      if (!checkAllowReturn(this.machineCoinAmount, this.model.purCoinAmount)) {
+        return;
+      }
 
       const returnCoin = this.returnCoin(this.model.purCoinAmount, this.machineCoinList);
 
@@ -88,7 +95,10 @@ export default class Controller {
 
   // 해당 상품 수량 -= 1
   purchaseProduct(product, idx) {
-    //구매 가능 여부 체크
+    if (!checkAllowPurchase(product, this.model.purCoinAmount)) {
+      return;
+    }
+
     product.quantity -= 1;
     this.model.reducePurCoin(product.price);
 

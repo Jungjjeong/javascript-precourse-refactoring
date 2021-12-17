@@ -2,6 +2,7 @@ import { ID } from '../storage/constants.js';
 import Model from './Model.js';
 import View from './View.js';
 import Storage from '../storage/Storage.js';
+import { checkProduct } from '../storage/validator.js';
 
 export default class Controller {
   constructor() {
@@ -32,7 +33,9 @@ export default class Controller {
       const name = this.nameInput.value;
       const price = this.priceInput.value;
       const quantity = this.quantityInput.value;
-      // 등록 가능 여부 체크
+      if (!checkProduct(name, price, quantity, this.model.productList)) {
+        return;
+      }
       this.model.addProduct(name, price, quantity);
       this.view.showList(this.model.productList);
     });
@@ -43,7 +46,7 @@ export default class Controller {
     if (!productList) {
       return;
     }
-    console.log(productList);
+
     this.model.addPurProduct(productList);
     this.view.showList(productList);
   }
