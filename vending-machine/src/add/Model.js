@@ -16,6 +16,12 @@ export default class Model {
     this.productList.push(this.product);
   }
 
+  addPurProduct(productList) {
+    this.productList = productList;
+
+    return this.productList;
+  }
+
   removeProduct(productIdx) {
     this.productList.splice(productIdx, 1);
   }

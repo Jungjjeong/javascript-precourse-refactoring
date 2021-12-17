@@ -96,4 +96,10 @@ export const PURCHASE = {
   COIN_10: '10원',
 };
 
+export const KEY = {
+  PRODUCT: '상품',
+  VENDING_MACHINE_COIN: '충전금액',
+  PURCHASE_COIN: '투입금액',
+};
+
 export const COIN_ARR = [500, 100, 50, 10];

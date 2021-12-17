@@ -39,4 +39,30 @@ export default class Controller {
 
     return coinIndexArr;
   }
+
+  updateTable(machine) {
+    if (!machine) {
+      console.log('없네');
+      return;
+    }
+
+    this.model.coinAmount = machine.coinAmount;
+    this.model.coinList = machine.coinList;
+
+    this.view.showAmount(this.model.coinAmount);
+    this.view.showList(this.model.coinList);
+    console.log(this.model.coinAmount);
+    console.log(this.model.coinList);
+  }
+
+  setPurchaseTable() {
+    if (!this.model.coinAmount || !this.model.coinList) {
+      return;
+    }
+
+    return {
+      coinAmount: this.model.coinAmount,
+      coinList: this.model.coinList,
+    };
+  }
 }

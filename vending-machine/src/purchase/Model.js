@@ -2,13 +2,12 @@ import Coin from '../machine/Model.js';
 
 class PurchaseCoin {
   constructor(coinAmount) {
-    this.purCoinAmount = Number(coinAmount);
+    this.amount = Number(coinAmount);
   }
 }
 
 export default class Model {
   constructor() {
-    this.purchaseCoin = new PurchaseCoin();
     this.purCoinAmount = 0;
     this.returnCoinList = [0, 0, 0, 0]; // 반환되는 코인 수
   }
@@ -20,30 +19,19 @@ export default class Model {
   }
 
   // 투입 금액
-  addPurCoin(coinAmount) {
-    this.coin = new PurchaseCoin(coinAmount);
-
-    this.purCoinAmount += this.coin.purCoinAmount;
-    console.log(this.purCoinAmount);
+  addPurCoin(coin) {
+    const addCoin = new PurchaseCoin(coin);
+    this.purCoinAmount += addCoin.amount;
   }
 
-  // 반환 코인 구하기
-  addCoin(coinAmount, coinArr) {
-    this.coin = new Coin(coinAmount, coinArr);
-    this.returnCoinList.forEach((coin, idx) => {
-      coin += this.coin.coinArr[idx];
-      this.returnCoinList[idx] = coin;
-    });
-
-    this.purCoinAmount -= this.coin.coinAmount; // 반환된 금액 빼기
+  // 상품 구매 혹은 반환으로 인해 코인 양 minus
+  reducePurCoin(coin) {
+    const reduceCoin = new PurchaseCoin(coin);
+    this.purCoinAmount -= reduceCoin.amount;
   }
 
-  removeCoin(coinAmount, coinArr) {
-    this.coinList.forEach((coin, idx) => {
-      coin -= coinArr[idx];
-      this.coinList[idx] = coin;
-    });
-
-    this.coinAmount -= coinAmount;
+  updatePurCoin(coin) {
+    const updateCoin = new PurchaseCoin(coin);
+    this.purCoinAmount = updateCoin.amount;
   }
 }

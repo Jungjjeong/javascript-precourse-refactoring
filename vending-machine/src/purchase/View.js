@@ -12,7 +12,6 @@ export default class View {
   }
 
   showProductList(productList) {
-    console.log(productList);
     createPurchaseTbody(
       productList,
       [CLASS.PURCHASE_NAME, CLASS.PURCHASE_PRICE, CLASS.PURCHASE_QUANTITY],
@@ -21,7 +20,12 @@ export default class View {
   }
 
   showReturnCoinList(coinList) {
-    updateCoinTbody(this.$tbody, [coinList[0], coinList[1], coinList[2], coinList[3]]);
+    updateCoinTbody(this.$coinTbody, [
+      coinList[0],
+      coinList[1],
+      coinList[2],
+      coinList[3],
+    ]);
   }
 
   showAmount(purchasecoinAmount) {

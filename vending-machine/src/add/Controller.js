@@ -1,21 +1,32 @@
 import { ID } from '../storage/constants.js';
 import Model from './Model.js';
 import View from './View.js';
-import PurController from '../purchase/Controller.js';
+import Storage from '../storage/Storage.js';
 
 export default class Controller {
   constructor() {
     this.model = new Model();
     this.view = new View();
-    this.purControll = new PurController();
+    this.storage = new Storage();
     this.nameInput = document.querySelector(`#${ID.ADD_NAME_INPUT}`);
     this.priceInput = document.querySelector(`#${ID.ADD_PRICE_INPUT}`);
     this.quantityInput = document.querySelector(`#${ID.ADD_QUANTITY_INPUT}`);
     this.addBtn = document.querySelector(`#${ID.ADD_BTN}`);
-    this.addProduct();
+    this.addProductInfo();
+  }
+  // storage
+  getCurrentProduct() {
+    const current = this.storage.product;
+    if (current.quantity == 0) {
+      return;
+    }
+
+    this.model.addProduct(current.name, current.price, current.quantity);
+    this.view.showList(this.model.productList);
   }
 
-  addProduct() {
+  // 하나씩 추가
+  addProductInfo() {
     this.addBtn.addEventListener('click', e => {
       e.preventDefault();
       const name = this.nameInput.value;
@@ -24,8 +35,25 @@ export default class Controller {
       // 등록 가능 여부 체크
       this.model.addProduct(name, price, quantity);
       this.view.showList(this.model.productList);
-
-      this.purControll.addPurProduct(this.model.productList);
     });
+  }
+
+  // 수량 업데이트 된 list 받기
+  updateTable(productList) {
+    if (!productList) {
+      return;
+    }
+    console.log(productList);
+    this.model.addPurProduct(productList);
+    this.view.showList(productList);
+  }
+
+  // 구매 표로 보내기
+  setPurchaseTable() {
+    if (!this.model.productList) {
+      return;
+    }
+
+    return this.model.productList;
   }
 }
