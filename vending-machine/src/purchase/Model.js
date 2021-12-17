@@ -1,5 +1,3 @@
-import Coin from '../machine/Model.js';
-
 class PurchaseCoin {
   constructor(coinAmount) {
     this.amount = Number(coinAmount);

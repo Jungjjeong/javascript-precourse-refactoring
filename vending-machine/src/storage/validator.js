@@ -91,7 +91,7 @@ export function checkPurchaseCoin(coin) {
 }
 
 function checkPurQuantity(product) {
-  if (product.quantity === 0) {
+  if (Number(product.quantity) === 0) {
     alert('해당 상품의 구매할 수 있는 수량이 없습니다.');
     return;
   }
@@ -100,7 +100,7 @@ function checkPurQuantity(product) {
 }
 
 function checkPurCoin(product, coin) {
-  if (product.price > coin) {
+  if (Number(product.price) > coin) {
     alert('해당 상품을 구매할 돈이 없습니다.');
     return;
   }
@@ -109,11 +109,19 @@ function checkPurCoin(product, coin) {
 }
 
 export function checkAllowPurchase(product, coin) {
-  if (checkPurQuantity(product) || checkPurchaseCoin(product, coin)) {
+  if (checkPurQuantity(product) && checkPurCoin(product, coin)) {
+    console.log(product);
+    console.log(coin);
     return true;
   }
 
   return false;
+}
+
+export function checkPurchase(coin) {
+  if (coin == 0) {
+    alert('해당 상품을 구매할 돈이 없습니다.');
+  }
 }
 
 // return

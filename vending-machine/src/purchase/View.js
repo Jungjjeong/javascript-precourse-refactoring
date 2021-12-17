@@ -31,4 +31,8 @@ export default class View {
   showAmount(purchasecoinAmount) {
     this.$amount.innerHTML = purchasecoinAmount;
   }
+
+  appendDataset(element, key, val) {
+    element.setAttribute(key, val);
+  }
 }

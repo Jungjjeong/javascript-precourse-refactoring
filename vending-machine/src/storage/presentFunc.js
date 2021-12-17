@@ -120,14 +120,17 @@ export function createPurchaseTbody(productList, classList, tbody) {
     const body = document.createElement('tr');
     body.className = CLASS.PURCHASE_ITEM;
     const first = document.createElement('td');
-    first.innerText = product.name;
-    first.className = classList[0];
+    appendDatasetTD(first, 'data-product-name', product.name, product.name, classList[0]);
     const second = document.createElement('td');
-    second.innerText = product.price;
-    second.className = classList[1];
+    appendDatasetTD(second, 'data-product-price', product.price, product.price, classList[1]);
     const third = document.createElement('td');
-    third.innerText = product.quantity;
-    third.className = classList[2];
+    appendDatasetTD(
+      third,
+      'data-product-quantity',
+      product.quantity,
+      product.quantity,
+      classList[2],
+    );
     const fourth = document.createElement('td');
     fourth.appendChild(createPurchaseBtn(PURCHASE.PURCHASE));
 
@@ -136,6 +139,12 @@ export function createPurchaseTbody(productList, classList, tbody) {
   });
 
   appendTbodyStyle(tbody);
+}
+
+function appendDatasetTD(element, key, val, text, className) {
+  element.innerText = text;
+  element.className = className;
+  element.setAttribute(key, val);
 }
 
 function createPurchaseBtn(text) {

@@ -1,5 +1,5 @@
 import { ID, CLASS, COIN_ARR } from '../storage/constants.js';
-import { checkAllowPurchase, checkAllowReturn } from '../storage/validator.js';
+import { checkAllowPurchase, checkAllowReturn, checkPurchaseCoin } from '../storage/validator.js';
 import Storage from '../storage/Storage.js';
 import Model from './Model.js';
 import View from './View.js';
