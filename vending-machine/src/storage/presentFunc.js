@@ -69,13 +69,14 @@ export function createTable(colums, bodyId) {
   return table;
 }
 
-export function createCoinTbody(tbody, rows) {
-  rows.forEach(row => {
+export function createCoinTbody(tbody, rows, idArr) {
+  rows.forEach((row, idx) => {
     const body = document.createElement('tr');
     const first = document.createElement('td');
     first.innerText = row[0];
     const second = document.createElement('td');
     second.innerText = row[1];
+    second.id = idArr[idx];
 
     appendDiv(body, [first, second]);
     tbody.appendChild(body);

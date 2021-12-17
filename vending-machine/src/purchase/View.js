@@ -21,18 +21,14 @@ export default class View {
 
   showReturnCoinList(coinList) {
     updateCoinTbody(this.$coinTbody, [
-      coinList[0],
-      coinList[1],
-      coinList[2],
-      coinList[3],
+      `${coinList[0]}개`,
+      `${coinList[1]}개`,
+      `${coinList[2]}개`,
+      `${coinList[3]}개`,
     ]);
   }
 
   showAmount(purchasecoinAmount) {
     this.$amount.innerHTML = purchasecoinAmount;
-  }
-
-  appendDataset(element, key, val) {
-    element.setAttribute(key, val);
   }
 }

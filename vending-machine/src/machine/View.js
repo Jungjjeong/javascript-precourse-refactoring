@@ -10,7 +10,12 @@ export default class View {
   }
 
   showList(coinList) {
-    updateCoinTbody(this.$tbody, [coinList[0], coinList[1], coinList[2], coinList[3]]);
+    updateCoinTbody(this.$tbody, [
+      `${coinList[0]}개`,
+      `${coinList[1]}개`,
+      `${coinList[2]}개`,
+      `${coinList[3]}개`,
+    ]);
   }
 
   showAmount(coinAmount) {

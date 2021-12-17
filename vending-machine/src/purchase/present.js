@@ -9,12 +9,16 @@ function initCoin($div) {
     `${TABLE_ID.RETURN_COIN_TABLE}`,
   );
   const $coinTBody = $coinTable.querySelector('tbody');
-  func.createCoinTbody($coinTBody, [
-    [PURCHASE.COIN_500, ''],
-    [PURCHASE.COIN_100, ''],
-    [PURCHASE.COIN_50, ''],
-    [PURCHASE.COIN_10, ''],
-  ]);
+  func.createCoinTbody(
+    $coinTBody,
+    [
+      [PURCHASE.COIN_500, ''],
+      [PURCHASE.COIN_100, ''],
+      [PURCHASE.COIN_50, ''],
+      [PURCHASE.COIN_10, ''],
+    ],
+    [ID.PURCHASE_COIN_500, ID.PURCHASE_COIN_100, ID.PURCHASE_COIN_50, ID.PURCHASE_COIN_10],
+  );
 
   func.appendDiv($div, [$coinTitle, $coinBtn, $coinTable]);
 }
@@ -31,16 +35,9 @@ function initItem($div) {
 
 function initPurchase($div) {
   const $purchaseTitle = func.createTitle('h3', PURCHASE.CHARGE_TITLE);
-  const $purchaseInput = func.createInput(
-    'number',
-    PURCHASE.CHARGE_INPUT,
-    ID.PURCHASE_INPUT,
-  );
+  const $purchaseInput = func.createInput('number', PURCHASE.CHARGE_INPUT, ID.PURCHASE_INPUT);
   const $purchaseBtn = func.createBtn(PURCHASE.CHARGE_BTN, ID.PURCHASE_BTN);
-  const $purchaseAmount = func.createAmountText(
-    PURCHASE.CHARGE_AMOUNT,
-    ID.PURCHASE_AMOUNT,
-  );
+  const $purchaseAmount = func.createAmountText(PURCHASE.CHARGE_AMOUNT, ID.PURCHASE_AMOUNT);
 
   func.appendDiv($div, [$purchaseTitle, $purchaseInput, $purchaseBtn, $purchaseAmount]);
 }
