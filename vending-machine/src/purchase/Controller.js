@@ -32,12 +32,11 @@ export default class Controller {
 
   getCurrentCoin() {
     const current = this.storage.purchaseCoin;
-    if (current.purchaseCoin == 0) {
+    if (current.productCoin == undefined) {
       return;
     }
-    console.log(current.purchaseCoin);
 
-    this.model.purCoinAmount = current.purchaseCoin;
+    this.model.purCoinAmount = current.productCoin;
     this.view.showAmount(this.model.purCoinAmount);
   }
 
@@ -65,6 +64,7 @@ export default class Controller {
       this.model.addPurCoin(purCoinAmount);
 
       this.view.showAmount(this.model.purCoinAmount);
+      this.updateStorage(this.model.purCoinAmount);
     });
   }
 
@@ -144,7 +144,8 @@ export default class Controller {
   }
 
   updateStorage(coin) {
-    this.storage.updatePurchaseCoin(coin);
+    const coinAmount = { productCoin: coin };
+    this.storage.updatePurchaseCoin(coinAmount);
   }
 
   // 잔돈 충전에 다시 렌더링해줘야지
