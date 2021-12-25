@@ -6,7 +6,7 @@ class Item {
 }
 
 export default class Model {
-    constructor(content) {
+    constructor() {
         this.list = [];
     }
 

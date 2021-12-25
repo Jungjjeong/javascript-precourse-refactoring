@@ -211,6 +211,7 @@ input[type=checkbox]:checked::after {
 .fa-trash {
     display: block;
     cursor: pointer;
+    background-color: aqua;
     
     transition: 0.3s 0.1s;
 }
